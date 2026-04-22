@@ -1,0 +1,40 @@
+<div class="row">
+    <h1 class="text-center">Configurations</h1>
+</div>
+
+<div class="row mt-2 mb-2">
+    <div class="col-12 col-sm-4">
+    </div>
+</div>
+
+{{#if hasConfigurations}}
+<div class="row d-flex justify-content-center">
+    {{#each configurationList}}
+    <div class="col-12 col-sm-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">ITBIS:</h5>
+                <p class="card-subtitle">{{this.ITBIS}}</p>
+                <a href="/configuration/edit/{{this._id}}" class="btn btn-primary float-end"><i
+                        class="bi bi-pencil"></i> Edit</a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+{{else}}
+
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-4">
+        <div class="alert alert-info" role="alert">
+            <i class="bi bi-info-circle"></i>
+            You have no configurations registered.
+        </div>
+    </div>
+</div>
+
+{{/if}}
+{{#section "scripts"}}
+<script src=""></script>
+{{/section}}

@@ -1,0 +1,74 @@
+<div class="row">
+    <h1 class="text-center">Dashboard</h1>
+</div>
+
+<div class="row mt-2 mb-2">
+    <div class="col-12 col-sm-4">
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center">
+    <div class="card-group col-12 col-sm-8">
+        <div class="card border-dark mb-3">
+            <div class="card-header">
+                Orders
+            </div>
+            <div class="card-body text-danger">
+                <h5 class="card-title">Orders created:</h5>
+                <p class="card-text fs-4">{{orders}}</p>
+                <h5 class="card-title">Orders created today:</h5>
+                <p class="card-text fs-4">{{ordersToday}}</p>
+            </div>
+        </div>
+        <div class="card border-dark mb-3">
+            <div class="card-header">
+                Commerces
+            </div>
+            <div class="card-body text-success">
+                <h5 class="card-title">Active commerces:</h5>
+                <p class="card-text fs-4">{{activeCommerce}}</p>
+                <h5 class="card-title">Inactive commerces:</h5>
+                <p class="card-text fs-4">{{inactiveCommerce}}</p>
+            </div>
+        </div>
+        <div class="card border-dark mb-3">
+            <div class="card-header">
+                Clients
+            </div>
+            <div class="card-body text-info">
+                <h5 class="card-title">Active clients:</h5>
+                <p class="card-text fs-4">{{activeClient}}</p>
+                <h5 class="card-title">Inactive clients:</h5>
+                <p class="card-text fs-4">{{inactiveClient}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row d-flex justify-content-center">
+    <div class="card-group col-12 col-sm-6">
+        <div class="card border-dark mb-3">
+            <div class="card-header">
+                Deliveries
+            </div>
+            <div class="card-body text-warning">
+                <h5 class="card-title">Active deliveries:</h5>
+                <p class="card-text fs-4">{{activeDelivery}}</p>
+                <h5 class="card-title">Inactive deliveries:</h5>
+                <p class="card-text fs-4">{{inactiveDelivery}}</p>
+            </div>
+        </div>
+        <div class="card border-dark mb-3">
+            <div class="card-header">
+                Products
+            </div>
+            <div class="card-body text-secondary">
+                <h5 class="card-title">Products created:</h5>
+                <p class="card-text fs-3">{{products}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#section "scripts"}}
+<script src=""></script>
+{{/section}}

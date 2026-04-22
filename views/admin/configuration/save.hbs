@@ -1,0 +1,26 @@
+<div class="row d-flex justify-content-center">
+    <div class=" col-12 col-sm-4">
+        <div class="card">
+            <div class="card-header bg-primary text-light">
+                <h5 class="text-center"><i class="bi bi-person-add"></i> Edit Configuration</h5>
+            </div>
+            <div class="card-body">
+                <form action="/configuration/edit" method="POST">
+                    <div class="mb-3">
+                        <label for="ITBIS-input" class="form-label">ITBIS: <span class="text-danger">*</span></label>
+                        <input type="number" value="{{configuration.ITBIS}}" class="form-control"
+                            id="ITBIS-input" name="ITBIS" required="required" />
+                    </div>
+                    
+                    <input type="hidden" name="ConfigurationId" value="{{configuration._id}}" />
+                    <div>
+                        <button type="submit" class="btn btn-primary float-end"><i class="bi bi-floppy"></i>
+                            Save</button>
+                        <a href="/configuration/index" class="btn btn-warning float-end me-2"><i class="bi bi-arrow-left"></i>
+                            Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

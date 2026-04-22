@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-light">
+                <h5 class="text-center"><i class="bi bi-person-add"></i> New
+                    User</h5>
+            </div>
+            <div class="card-body">
+                <form enctype="multipart/form-data" action="/user/register-commerce" method="POST">
+                    <div class="mb-3">
+                        <label for="name-input" class="form-label">Name of the Commerce: <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="name-input" name="Name" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone-input" class="form-label">Phone: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="phone-input" name="Phone" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="email-input" class="form-label">Email: <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="email-input" name="Email" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="photo-input" class="form-label">Logo of the Commerce: <span
+                                class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="photo-input" name="Logo" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="opening-hour-input" class="form-label">Opening hours: <span
+                                class="text-danger">*</span></label>
+                        <input type="time" class="form-control" id="opening-hour-input" name="OpeningHour"
+                            required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="closing-hour-input" class="form-label">Closing hours: <span
+                                class="text-danger">*</span></label>
+                        <input type="time" class="form-control" id="closing-hour-input" name="ClosingHour"
+                            required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="commerce-type" class="form-label">Commerce type:</label>
+                        <select id="commerce-type" class="form-select" name="CommerceTypeId" required="required">
+                            <option value="">Select some option</option>
+                            {{#each commerceTypesList}}
+                            <option value="{{this._id}}">{{this.name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password-input" class="form-label">Password <span
+                                class="text-danger">*</span></label>
+                        <input type="password" class="form-control" id="password-input" name="Password"
+                            required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirm-password-input" class="form-label">Confirm Password <span
+                                class="text-danger">*</span></label>
+                        <input type="password" class="form-control" id="confirm-password-input" name="ConfirmPassword"
+                            required="required" />
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary float-end"><i
+                                class="bi bi-floppy"></i> Save</button>
+                        <a href="/" class="btn btn-warning float-end me-2"><i class="bi bi-arrow-left"></i> Back to
+                            login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

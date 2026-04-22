@@ -1,0 +1,38 @@
+.card-size-icon{
+    width: 20rem;
+    height: 33rem;
+}
+
+.card-commerces-size{
+    width: 40rem;
+    height: 20rem;
+}
+
+.img-home-commerce-type{
+    width: 415px;
+    height: 300px;
+}
+
+.img-product {
+    width: 75%;
+    height: 150px;
+}
+
+.card-size-addresses{
+    height: 40rem;
+}
+
+.img-commerce-order {
+    width: 40%;
+    height: 75px;
+}
+
+.commerce-photo{
+    width: 60px; 
+    height: 60px;
+}
+
+.product-photo{
+    width: 100px; 
+    height: 100px;
+}

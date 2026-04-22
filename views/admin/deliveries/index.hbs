@@ -1,0 +1,88 @@
+<div class="row">
+    <h1 class="text-center">Deliveries list</h1>
+</div>
+
+<div class="row mt-2 mb-2">
+    <div class="col-12 col-sm-4">
+    </div>
+</div>
+
+{{#if hasDeliveries}}
+
+<div class="row">
+    {{#each deliveriesList}}
+
+    <div class="col-12 col-sm-4">
+        <div class="card">
+            <div class="row g-1">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <h5 class="card-title">Name: {{this.name}} {{this.lastname}}</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><span class="fw-bold">Phone number: </span>{{this.phone}}</li>
+                            <li class="list-group-item"><span class="fw-bold">Email: </span>{{this.email}}</li>
+                        </ul>
+                        <p class="card-text"><small class="text-body-secondary">Amount of orders delivered: {{this.orderDeliveredQuantity}}</small></p>
+                        <div class="mt-2">
+                            <form method="post" action="/deliveries/activation" class="float-end me-2 mb-2">
+                                <input type="hidden" value="{{this._id}}" name="DeliveryId" />
+                                {{#if this.isActive}}
+                                <button type="button" class="btn btn-warning float-end me-2" data-bs-toggle="modal"
+                                    data-bs-target="#activation-modal"><i class="bi bi-toggle-off"></i>
+                                    Deactivation</button>
+                                {{else}}
+                                <button type="button" class="btn btn-info float-end me-2" data-bs-toggle="modal"
+                                    data-bs-target="#activation-modal"><i class="bi bi-toggle-on"></i>
+                                    Activation</button>
+                                {{/if}}
+                                <div class="modal fade" id="activation-modal" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="activate-modal"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="activate-modal">Confirm
+                                                    activation
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to {{#if
+                                                    this.isActive}}deactivate{{else}}activate{{/if}}
+                                                    this commerce?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger"
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                                <button type="submit" class="btn btn-primary">Accept</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{/each}}
+</div>
+
+{{else}}
+
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-4">
+        <div class="alert alert-warning" role="alert">
+            <i class="bi bi-info-circle"></i>
+            You have no deliveries registered.
+        </div>
+    </div>
+</div>
+
+{{/if}}
+{{#section "scripts"}}
+<script src=""></script>
+{{/section}}

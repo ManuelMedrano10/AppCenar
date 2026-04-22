@@ -1,0 +1,69 @@
+{{#if hasCategories}}
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <div class="card">
+            <div class="card-header bg-primary text-light">
+                <h5 class="text-center"><i class="bi bi-person-add"></i> {{#if editMode}} Edit Product
+                    {{product.name}}{{else}} New Product{{/if}}</h5>
+            </div>
+            <div class="card-body">
+                <form action="/products/{{#if editMode}}edit{{else}}create{{/if}}" enctype="multipart/form-data" 
+                    method="POST">
+                    <div class="mb-3">
+                        <label for="name-input" class="form-label">Name: <span class="text-danger">*</span></label>
+                        <input type="text" value="{{#if editMode}}{{product.name}}{{/if}}" class="form-control"
+                            id="name-input" name="Name" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="description-textarea" class="form-label">Description: <span class="text-danger">*</span></label>
+                        <textarea name="Description" id="description-textarea" 
+                        class="form-control" required="required">{{#if editMode}}{{product.Description}}{{/if}}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name-input" class="form-label">Price: <span class="text-danger">*</span></label>
+                        <input type="number" value="{{#if editMode}}{{product.price}}{{/if}}" class="form-control"
+                            id="name-input" name="Price" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="product-Photo-input" class="form-label">Product photo: <span class="text-danger">*</span></label>
+                        <input type="file" value="{{#if editMode}}{{product.productPhoto}}{{/if}}" class="form-control"
+                            id="product-Photo-input" name="ProductPhoto" {{#if editMode}}{{else}}required="required"{{/if}} />
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category: <span
+                                class="text-danger">*</span></label>
+                        <select name="CategoryId" class="form-select" id="category" required="required">
+                            <option value="">Select an option</option>
+                            {{#each categoriesList}}
+                            <option value="{{this._id}}" {{#if (eq this._id ../product.categoryId)}}selected{{/if}}>
+                                {{this.name}}
+                            </option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    
+                    {{#if editMode}}
+                    <input type="hidden" name="ProductId" value="{{product._id}}" />
+                    {{/if}}
+
+                    <div>
+                        <button type="submit" class="btn btn-primary float-end"><i class="bi bi-floppy"></i>
+                            Save</button>
+                        <a href="/products/index" class="btn btn-warning float-end me-2"><i
+                                class="bi bi-arrow-left"></i>
+                            Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{else}}
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-8 py-5 alert alert-info" role="alert">
+        <h2 class="display-5 fw-semibold text-center">You have not registered any categories.</h2>
+        <p class="fw-medium fs-5"><a href="/categories/create">Create one</a> to be able to add a category.</p>
+    </div>
+</div>
+{{/if}}

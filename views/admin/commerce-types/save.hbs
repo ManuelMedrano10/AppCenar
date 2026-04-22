@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <div class="card">
+            <div class="card-header bg-primary text-light">
+                <h5 class="text-center"><i class="bi bi-person-add"></i> {{#if editMode}} Edit Commerce Type
+                    {{commerceType.name}}{{else}} New Commerce Type{{/if}}</h5>
+            </div>
+            <div class="card-body">
+                <form action="/commerce-types/{{#if editMode}}edit{{else}}create{{/if}}" enctype="multipart/form-data" 
+                    method="POST">
+                    <div class="mb-3">
+                        <label for="name-input" class="form-label">Name: <span class="text-danger">*</span></label>
+                        <input type="text" value="{{#if editMode}}{{commerceType.name}}{{/if}}" class="form-control"
+                            id="name-input" name="Name" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="description-textarea" class="form-label">Description: <span class="text-danger">*</span></label>
+                        <textarea name="Description" id="description-textarea" 
+                        class="form-control" required="required">{{#if editMode}}{{commerceType.Description}}{{/if}}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="icon-input" class="form-label">Icon: <span class="text-danger">*</span></label>
+                        <input type="file" value="{{#if editMode}}{{commerceType.Icon}}{{/if}}" class="form-control"
+                            id="icon-input" name="Icon" {{#if editMode}}{{else}}required="required"{{/if}} />
+                    </div>
+                    {{#if editMode}}
+                    <input type="hidden" name="CommerceTypeId" value="{{commerceType._id}}" />
+                    {{/if}}
+
+                    <div>
+                        <button type="submit" class="btn btn-primary float-end"><i class="bi bi-floppy"></i>
+                            Save</button>
+                        <a href="/commerce-types/index" class="btn btn-warning float-end me-2"><i
+                                class="bi bi-arrow-left"></i>
+                            Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
