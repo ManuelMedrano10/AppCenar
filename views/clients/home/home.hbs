@@ -1,0 +1,26 @@
+<div class="row">
+    <h1 class="text-center display-4 fw-semibold">Commerce Selection</h1>
+</div>
+
+{{#if hasCommerceTypes}}
+<div class="row">
+    {{#each commerceTypesList}}
+    <div class="col-12 col-sm-4">
+        <div class="card list-group mb-3">
+            <a href="/client-home/commerce-list/{{this._id}}" class="list-group-item-action">
+                <img src="{{this.Icon}}" class="card-image img-home-commerce-type" alt="{{this.name}}">
+                <div class="card-img-overlay">
+                    <h5 class="card-title fs-2">{{this.name}}</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{else}}
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-8 py-5 alert alert-info" role="alert">
+        <h2 class="display-5 fw-semibold text-center">There are no commerce types registered.</h2>
+    </div>
+</div>
+{{/if}}

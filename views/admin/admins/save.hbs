@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <div class="card">
+            <div class="card-header bg-primary text-light">
+                <h5 class="text-center"><i class="bi bi-person-add"></i> {{#if editMode}} Edit Admin {{admin.name}}
+                    {{else}} New Administrator{{/if}}</h5>
+            </div>
+            <div class="card-body">
+                <form action="/admins/{{#if editMode}}edit{{else}}create{{/if}}" method="POST">
+                    <div class="mb-3">
+                        <label for="name-input" class="form-label">Name: <span class="text-danger">*</span></label>
+                        <input type="text" value="{{#if editMode}}{{admin.name}}{{/if}}" class="form-control"
+                            id="name-input" name="Name" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastname-input" class="form-label">Lastname: <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="lastname-input" name="Lastname"
+                            value="{{#if editMode}}{{admin.lastname}}{{/if}}" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="cedula-input" class="form-label">Cedula: <span class="text-danger">*</span></label>
+                        <input type="text" value="{{#if editMode}}{{admin.cedula}}{{/if}}" class="form-control"
+                            id="cedula-input" name="Cedula" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="email-input" class="form-label">Email: <span class="text-danger">*</span></label>
+                        <input type="email" value="{{#if editMode}}{{admin.email}}{{/if}}" class="form-control"
+                            id="email-input" name="Email" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="username-input" class="form-label">Username: <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="sername-input" name="Username"
+                            value="{{#if editMode}}{{admin.username}}{{/if}}" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="password-input" class="form-label">Password </label>
+                        <input type="password" class="form-control" id="password-input" name="Password" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirm-password-input" class="form-label">Confirm Password </label>
+                        <input type="password" class="form-control" id="confirm-password-input"
+                            name="ConfirmPassword" />
+                    </div>
+
+                    {{#if editMode}}
+                    <input type="hidden" name="AdminId" value="{{admin._id}}" />
+                    {{/if}}
+
+                    <div>
+                        <button type="submit" class="btn btn-primary float-end"><i class="bi bi-floppy"></i>
+                            Save</button>
+                        <a href="/admins/index" class="btn btn-warning float-end me-2"><i class="bi bi-arrow-left"></i>
+                            Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

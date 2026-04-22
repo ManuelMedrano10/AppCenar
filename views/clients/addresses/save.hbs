@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <div class="card">
+            <div class="card-header bg-danger text-light">
+                <h5 class="text-center"><i class="bi bi-person-add"></i> {{#if editMode}} Edit Address
+                    {{address.name}}{{else}} New Address{{/if}}</h5>
+            </div>
+            <div class="card-body">
+                <form action="/addresses/{{#if editMode}}edit{{else}}create{{/if}}" method="POST">
+                    <div class="mb-3">
+                        <label for="name-input" class="form-label">Name: <span class="text-danger">*</span></label>
+                        <input type="text" value="{{#if editMode}}{{address.name}}{{/if}}" class="form-control"
+                            id="name-input" name="Name" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="description-textarea" class="form-label">Description: <span class="text-danger">*</span></label>
+                        <textarea name="Description" id="description-textarea" 
+                        class="form-control" required="required">{{#if editMode}}{{address.Description}}{{/if}}</textarea>
+                    </div>
+
+                    {{#if editMode}}
+                    <input type="hidden" name="AddressId" value="{{address._id}}" />
+                    {{/if}}
+
+                    <div>
+                        <button type="submit" class="btn btn-primary float-end"><i class="bi bi-floppy"></i>
+                            Save</button>
+                        <a href="/addresses/index" class="btn btn-warning float-end me-2"><i
+                                class="bi bi-arrow-left"></i>
+                            Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

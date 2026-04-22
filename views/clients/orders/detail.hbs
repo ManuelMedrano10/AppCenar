@@ -1,0 +1,52 @@
+<div class="row d-flex justify-content-center">
+    <div class="mb-5 col-12 col-sm-6">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="text-center">
+                    <h2 class="card-title text-center">{{order.commerceId.name}}</h2>
+                    <p class="card-subtitle fs-4 fw-semibold">{{order.status}}</p>
+                    <p class="card-text">{{order.dateTimeOrder}}</p>
+                </div>
+
+                {{#each order.productId}}
+                <div class="card-body border-bottom border-secondary d-flex align-items-between py-2 px-3">
+                    <div class="flex-shrink-0 p-2 product-photo">
+                        <img src="{{this.productPhoto}}" class="img-fluid rounded" alt="{{this.name}}">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                        <div class="d-flex justify-content-between py-2 px-4 mb-1 fs-5">
+                            <span class="card-title fw-semibold">{{this.name}}</span>
+                            <span class="text-muted">RD$ {{this.price}}</span>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+
+                {{#if isOrderInProcess}}
+                <div class="row d-flex border-bottom border-secondary justify-content-start mb- py-2">
+                    <div class="flex-shrink-0 display-6 ps-5 product-photo">
+                        <i class="bi bi-geo-alt"></i>
+                    </div>
+                    <div class="flex-grow-1 col-10 py-1">
+                        <p class="list-group-item fw-normal text-secondary fs-6">Direccion:</p>
+                        <p class="list-group-item fs-5 fw-bold">{{order.clientAddressId.Description}}</p>
+                    </div>
+                </div>
+                {{/if}}
+
+                <div class="row d-flex justify-content-between mb-1 fs-5 fw-bold py-2 px-2">
+                    <div class="ps-3 col-4">
+                        <p class="list-group-item">Total:</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="list-group-item">RD$ {{order.total}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row d-md-flex justify-content-md-end">
+            <a href="/client-home/home" class="btn btn-warning"><i class="bi bi-door-open"></i>
+                Back</a>
+        </div>
+    </div>
+</div>

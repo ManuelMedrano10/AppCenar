@@ -1,0 +1,77 @@
+{{#if hasCommerce}}
+
+<div class="row">
+    <h1 class="text-center display-4 fw-semibold">List of Commerces</h1>
+</div>
+
+<div class="row mt-2 mb-2">
+    <div class="col-8 offset-2">
+        <form method="post" action="/client-home/filter-by-name">
+            <div class="d-flex justify-content-center">
+                <div class="col-12 input-group me-1">
+                    <input type="text" class="form-control" name="NameFilter" placeholder="Search...">
+                </div>
+                <div class="col-sm-2 d-grid gap-2">
+                    <button type="submit" class="btn btn-secondary float-start"><i class="bi bi-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="row d-flex justify-content-center">
+    <div class="mb-5 col-12 col-sm-10">
+        <p class="fs-3 fw-bold">{{commercesCount}} commerces</p>
+        {{#each commerceList}}
+        <div class="card list-group mb-3">
+            <a href="/client-home/commerce-catalogue/{{this._id}}" class="list-group-item list-group-item-action">
+                <div class="col-12">
+                    <div class="row d-flex d-grid gap-0 column-gap-0">
+                        <div class="col-sm-2">
+                            <img src="{{this.photo}}" class="img-fluid rounded border border-secondary"
+                                alt="{{this.name}}">
+                        </div>
+                        <div class="col-sm-6 pe-5">
+                            <h2 class="card-title text-center">{{this.name}}
+                                <span>
+                                    {{#if this.isFavorite}}
+                                    <form action="/favorites/remove-favorite" method="POST" class="d-inline">
+                                        <input type="hidden" name="CommerceId" value="{{this.commerceIdString}}">
+                                        <button type="submit" class="btn btn-sm btn-danger"><i
+                                                class="bi bi-heart-fill"></i></button>
+                                    </form>
+                                    {{else}}
+                                    <form action="/favorites/add-favorite" method="POST" class="d-inline">
+                                        <input type="hidden" name="CommerceId" value="{{this.commerceIdString}}">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger"><i
+                                                class="bi bi-heart"></i></button>
+                                    </form>
+                                    {{/if}}
+                                </span>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+{{else}}
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-8 py-5 alert alert-info" role="alert">
+        <h2 class="display-5 fw-semibold text-center">Sorry! There are not any commerce registered with the type
+            selected.</h2>
+    </div>
+</div>
+{{/if}}
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-6 mb-4">
+        <div class="d-grid gap-2">
+            <a href="/client-home/home" class="btn btn-warning"><i class="bi bi-door-open"></i>
+                Back to Home</a>
+        </div>
+    </div>
+</div>

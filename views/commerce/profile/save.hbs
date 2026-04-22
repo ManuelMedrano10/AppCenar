@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-light">
+                <h5 class="text-center"><i class="bi bi-person-add"></i> Edit Commerce</h5>
+            </div>
+            <div class="card-body">
+                <form enctype="multipart/form-data" action="/commerce-profile/edit" method="POST">
+                    <div class="mb-3">
+                        <label for="phone-input" class="form-label">Phone: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" value="{{commerce.phone}}" id="phone-input" name="Phone"
+                            required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="email-input" class="form-label">Email: <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" value="{{commerce.email}}" id="email-input"
+                            name="Email" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="photo-input" class="form-label">Logo of the Commerce: <span
+                                class="text-danger">*</span></label>
+                        <input type="file" class="form-control" value="{{commerce.photo}}" id="photo-input"
+                            name="Logo" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="opening-hour-input" class="form-label">Opening hours: <span
+                                class="text-danger">*</span></label>
+                        <input type="time" class="form-control" value="{{commerce.openingHour}}" id="opening-hour-input"
+                            name="OpeningHour" required="required" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="closing-hour-input" class="form-label">Closing hours: <span
+                                class="text-danger">*</span></label>
+                        <input type="time" class="form-control" value="{{commerce.closingHour}}" id="closing-hour-input"
+                            name="ClosingHour" required="required" />
+                    </div>
+                    <input type="hidden" name="CommerceId" value="{{commerce._id}}" />
+                    <div>
+                        <button type="submit" class="btn btn-primary float-end"><i class="bi bi-floppy"></i>
+                            Save</button>
+                        <a href="/commerce-profile/index" class="btn btn-warning float-end me-2"><i class="bi bi-arrow-left"></i> Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

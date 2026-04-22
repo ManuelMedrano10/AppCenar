@@ -1,0 +1,89 @@
+{{#if hasAddresses}}
+
+<div class="row d-flex justify-content-center">
+    <div class="mb-5 col-12 col-sm-7">
+
+        <form method="post" action="/client-order/create">
+            <div class="card mb-3 shadow-sm card-size-addresses">
+                <div class="card-body col-12">
+                    {{#each clientAddressesList}}
+
+                    <div class="form-check">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item list-group-item-action">
+                                <input type="radio" class="btn-check" name="clientAddressId"
+                                    id="clienteAddress-{{this.name}}" value="{{this._id}}" required="required">
+                                <label class="btn" for="clienteAddress-{{this.name}}"><span
+                                        class="fw-bold">{{this.name}}</span> {{this.Description}}</label>
+                            </li>
+                        </ul>
+                    </div>
+                    {{/each}}
+
+                </div>
+            </div>
+            <button type="submit" class="btn btn-danger float-end">Prepare Order</button>
+        </form>
+    </div>
+    <div class="col-12 col-sm-5">
+        <div class="card mb-3 shadow-sm h-50">
+            <div class="card-header">
+                <div class="row d-flex align-items-center">
+                    <div class="col-4 col-sm-5">
+                        <img src="{{commerce.photo}}"
+                            class="img-product img-fluid border border-tertiary img-commerce-order" alt="{{this.name}}">
+                    </div>
+                    <div class="col-8 col-sm-7 pe-2">
+                        <h4 class="card-title">{{commerce.name}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body col-12">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-4 pb-2">
+                        <p class="card-text">Subtotal</p>
+                    </div>
+                    <div class="col-5 ps-5">
+                        <p class="card-text">${{subtotal}}</p>
+                    </div>
+
+                    <div class="row d-flex justify-content-between fw-bold">
+                        <div class="col-4 ps-5 pb-2">
+                            <p class="card-text">ITBIS</p>
+                        </div>
+                        <div class="col-4 ps-5">
+                            <p class="card-text">{{itbisPercentage}}%</p>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-between fw-bold">
+                        <div class="col-4 ps-5 pb-2">
+                            <p class="card-text">Total</p>
+                        </div>
+                        <div class="col-4 ps-4">
+                            <p class="card-text">{{total}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{else}}
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-8 py-5 alert alert-info" role="alert">
+        <h2 class="display-5 fw-semibold text-center">Sorry! You have not registered any addresses.</h2>
+        <p class="fw-medium fs-5"><a href="/addresses/create">Create one</a> to be able to add an order.</p>
+    </div>
+</div>
+{{/if}}
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-sm-6 mb-4">
+        <div class="d-grid gap-2">
+            <a href="/client-home/commerce-catalogue/{{commerce._id}}" class="btn btn-warning"><i
+                    class="bi bi-door-open"></i>
+                Back to Catalogue</a>
+        </div>
+    </div>
+</div>
