@@ -1,5 +1,5 @@
 {
-  "name": "appcenar",
+  "name": "app-cenar",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
@@ -7,9 +7,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js",
     "qa": "cross-env NODE_ENV=qa nodemon app.js",
+    "prod": "cross-env NODE_ENV=production node app.js",
     "seed:admin": "node ./seeds/seedAdmin.js",
     "seed:configuration": "node ./seeds/seedConfiguration.js"
   },
