@@ -5,7 +5,8 @@ import Products from "../../models/ProductsModel.js";
 
 export async function GetDashboard(req, res) {
     try {
-        const ordersToday = await Orders.find({ dateTimeOrder: Date.now() }).countDocuments();
+        const start = new Date().toDateString();
+        const ordersToday = await Orders.find({ dateTimeOrder: { $gte: start } }).countDocuments();
         const orders = await Orders.find().countDocuments();
         const activeCommerce = await Users.find({ role: Roles.COMMERCE, isActive: true }).countDocuments();
         const inactiveCommerce = await Users.find({ role: Roles.COMMERCE, isActive: false }).countDocuments();
